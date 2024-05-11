@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Artists</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/fonas.jpg'); /* Update the path according to your server setup */
+            background-size: cover; /* Covers the entire page */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* No repeating of the image */
+            color: #CBF55C; /* Maintains the original text color for contrast */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #290148; /* Original dark purple background */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #FFFFFF; /* White color for headings */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            color: #CBF55C; /* Original lime green text color for table cells */
+        }
+        th {
+            background-color: #400073; /* Original deep purple background for headers */
+            color: #FFFFFF; /* White text for headers */
+            font-family: cursive;
+        }
+        tr {
+            background-color: #400073; /* Original deep purple background for rows */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Top 5 Songs</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Genres</th>
+                <th>Popularity</th>
+                <th>Song Name</th>
+                <th>URI</th>
+            </tr>
+            {% for artist in top_artists %}
+            <tr>
+                <td>{{ artist.name }}</td>
+                <td>{{ artist.type }}</td>
+                <td>{{ artist.genres | join(', ') }}</td>
+                <td>{{ artist.popularity }}</td>
+                <td>{{ artist.song_name }}</td>
+                <td>{{ artist.uri }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
